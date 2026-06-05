@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Urbano</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Space+Grotesk:wght@400;700&display=swap');
+
+        :root {
+            --bg-color: #111;
+            --text-color: #eee;
+            --neon-pink: #ff00ff;
+            --neon-purple: #9d00ff;
+            --neon-violet: #ff66ff;
+            --neon-blue: #00ffff; 
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(17, 17, 17, 0.95);
+            border-bottom: 3px dashed var(--neon-purple);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 2.5rem;
+            color: var(--neon-violet);
+            transform: rotate(-3deg);
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-family: 'Permanent Marker', cursive;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--neon-pink); }
+
+        .que-se-hace-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .tarjeta-info {
+            background: #1a1a1a;
+            border: 3px solid var(--neon-purple);
+            padding: 2rem;
+            border-radius: 5px;
+            position: relative;
+            transform: rotate(-1deg);
+            box-shadow: 10px 10px 0px var(--neon-pink);
+            transition: transform 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .tarjeta-info:hover {
+            transform: rotate(0deg) scale(1.02);
+            box-shadow: 15px 15px 0px var(--neon-purple);
+        }
+
+        h2.section-title {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 3rem;
+            text-align: center;
+            margin: 3rem 0;
+            color: var(--neon-blue); 
+            text-shadow: 3px 3px 0px var(--neon-purple);
+        }
+
+        .page-content {
+            display: none;
+            padding: 2rem;
+            min-height: 80vh;
+        }
+
+        .page-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .back-btn {
+            background: var(--neon-blue);
+            color: black;
+            padding: 10px 20px;
+            font-family: 'Permanent Marker', cursive;
+            cursor: pointer;
+            border: none;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">GRAFFITI PORTFOLIO</div>
+        <nav class="nav-links">
+            <a href="#" onclick="showPage('home-page')">HOME</a>
+        </nav>
+    </header>
+
+    <div id="home-page" class="page-content active">
+        <section id="home" class="p-10 text-center">
+            <h1 class="text-6xl font-bold" style="font-family: 'Permanent Marker'; color: var(--neon-blue);">BIENVENIDO AL PARCHE</h1>
+        </section>
+
+        <section id="pasos">
+            <h2 class="section-title">PASOS DE DISEÑO</h2>
+        </section>
+
+        <section id="que-se-hace">
+            <h2 class="section-title">¿QUÉ SE HACE AQUÍ MI PEZ?</h2>
+            <div class="que-se-hace-grid">
+                <div class="tarjeta-info" onclick="showPage('ia-page')">
+                    <h3 style="color: var(--neon-purple); font-family: 'Permanent Marker';">CÓMO USO LA IA</h3>
+                </div>
+                <div class="tarjeta-info" onclick="showPage('fusion-page')">
+                    <h3 style="color: var(--neon-pink); font-family: 'Permanent Marker';">CÓMO USO FUSION 360</h3>
+                </div>
+                <div class="tarjeta-info" onclick="showPage('affinity-page')">
+                    <h3 style="color: var(--neon-violet); font-family: 'Permanent Marker';">CÓMO USO AFFINITY</h3>
+                </div>
+                <div class="tarjeta-info" onclick="showPage('clases-page')">
+                    <h3 style="color: white; font-family: 'Permanent Marker';">CÓMO SON LAS CLASES</h3>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="ia-page" class="page-content">
+        <button class="back-btn" onclick="showPage('home-page')">VOLVER AL INICIO</button>
+        <h2 class="section-title" style="color: var(--neon-blue);">CÓMO USO LA IA</h2>
+        <p class="text-center text-xl">Aquí se despliegan todos mis proyectos sobre IA...</p>
+    </div>
+
+    <div id="fusion-page" class="page-content">
+        <button class="back-btn" onclick="showPage('home-page')">VOLVER AL INICIO</button>
+        <h2 class="section-title" style="color: var(--neon-blue);">CÓMO USO FUSION 360</h2>
+        <p class="text-center text-xl">Aquí se despliegan mis modelados 3D...</p>
+    </div>
+
+    <div id="affinity-page" class="page-content">
+        <button class="back-btn" onclick="showPage('home-page')">VOLVER AL INICIO</button>
+        <h2 class="section-title" style="color: var(--neon-blue);">CÓMO USO AFFINITY</h2>
+        <p class="text-center text-xl">Aquí se despliegan mis proyectos de Affinity...</p>
+    </div>
+
+    <div id="clases-page" class="page-content">
+        <button class="back-btn" onclick="showPage('home-page')">VOLVER AL INICIO</button>
+        <h2 class="section-title" style="color: var(--neon-blue);">CÓMO SON LAS CLASES</h2>
+        <p class="text-center text-xl">Aquí se despliegan mis clases...</p>
+    </div>
+
+    <footer class="text-center p-10 text-gray-500">
+        <p>&copy; 2026 Creado con estilo</p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
